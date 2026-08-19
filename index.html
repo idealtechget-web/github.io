@@ -199,10 +199,6 @@
         .ticker-track {
             display: flex;
             width: max-content;
-            /* 💡 DICA VELOCIDADE AVISOS: 
-                Para deixar mais rápido, diminua os "40s" (ex: 20s). 
-                Se tiver muitos avisos e ficar rápido demais, aumente o tempo (ex: 80s).
-            */
             animation: tickerScroll 40s linear infinite;
         }
 
@@ -334,14 +330,6 @@
                     <div class="sub-logo">Hub de Soluções</div>
                 </div>
 
-                <!-- 💡 DICA SUPORTE:
-                     Para alterar o status para OFFLINE:
-                     1. Adicione a classe "support-offline" junto ao "support-status"
-                     2. Troque o href por="#"
-                     3. Troque a classe do span de "status-dot-green" para "status-dot-red"
-                     4. Troque a palavra "Online" por "Offline"
-                     Exemplo offline: <a href="#" class="support-status support-offline"><span class="status-dot-red"></span> Offline</a>
-                -->
                 <a href="https://wa.me/5547996315851" target="_blank" class="support-status">
                     <span class="status-dot-green"></span> Online
                 </a>
@@ -349,14 +337,6 @@
 
             <!-- Centro: Painel de Status Estático Expandido com LEDs -->
             <div class="status-panel">
-                
-                <!-- 💡 DICA LEDs:
-                     Para alterar a cor de um serviço, troque a classe da div led:
-                     Verde (Online)       => class="led led-green"
-                     Amarelo (Atenção)    => class="led led-yellow"
-                     Vermelho (Problema)  => class="led led-red"
-                -->
-
                 <div class="status-item" title="Status da Infraestrutura de Servidores">
                     <div class="led led-green"></div>
                     <span>Servidores</span>
@@ -412,13 +392,6 @@
         <!-- TICKER DE AVISOS ROLANTE CONTÍNUO E SEM BURACOS -->
         <div class="ticker-wrap">
             <div class="ticker-track">
-                
-                <!-- 💡 DICA AVISOS:
-                     Escreva todos os seus avisos neste BLOCO 1. 
-                     Depois, COPIE todo o conteúdo dele e COLE no BLOCO 2 logo abaixo. 
-                     Eles precisam ser sempre IDÊNTICOS para o loop infinito funcionar perfeitamente. 
-                -->
-
                 <!-- BLOCO 1 DO TEXTO -->
                 <div class="ticker-item">
                     <strong><i class="ph ph-warning-circle"></i> AVISOS IMPORTANTES:</strong>
@@ -427,7 +400,6 @@
                     <strong>|</strong> <i class="ph-fill ph-monitor-play"></i> Nova Central de Assinantes já disponível para consulta.
                     <strong>|</strong> <i class="ph ph-clock"></i> Evite suspensões, renove seu acesso sempre antes do vencimento.
                 </div>
-
                 <!-- BLOCO 2 DO TEXTO (Clone para o Loop Infinito) -->
                 <div class="ticker-item">
                     <strong><i class="ph ph-warning-circle"></i> AVISOS IMPORTANTES:</strong>
@@ -436,10 +408,8 @@
                     <strong>|</strong> <i class="ph-fill ph-monitor-play"></i> Nova Central de Assinantes já disponível para consulta.
                     <strong>|</strong> <i class="ph ph-clock"></i> Evite suspensões, renove seu acesso sempre antes do vencimento.
                 </div>
-
             </div>
         </div>
-
     </div>
 
     <!-- PAINEL PRINCIPAL (DASHBOARD) -->
@@ -478,32 +448,42 @@
                 </div>
             </a>
 
-            <!-- 4. VISITA TÉCNICA -->
-            <a href="https://www.checkos.net/pt/newos/8f74d659cfe441656308fb50ba517aca" target="_blank" class="nav-item">
-                <div class="nav-icon"><i class="ph ph-calendar-plus"></i></div>
+            <!-- 4. ORÇAMENTO -->
+            <a href="orcamento.html" class="nav-item">
+                <div class="nav-icon"><i class="ph ph-file-text"></i></div>
+                <div class="nav-text">
+                    <span class="nav-title">Orçamento</span>
+                    <span class="nav-desc">Peça sua proposta</span>
+                </div>
+            </a>
+
+            <!-- 5. VISITA TÉCNICA -->
+            <a href="visita.html" class="nav-item">
+                <div class="nav-icon"><i class="ph ph-wrench"></i></div>
                 <div class="nav-text">
                     <span class="nav-title">Visita Técnica</span>
-                    <span class="nav-desc">Agende seu horário</span>
+                    <span class="nav-desc">Agende seu suporte</span>
                 </div>
             </a>
 
-            <!-- 5. ADM & DEV -->
-            <a href="https://forms.gle/Mfai83TvMXMPPsRX8/" target="_blank" class="nav-item">
-                <div class="nav-icon"><i class="ph ph-chart-line-up"></i></div>
-                <div class="nav-text">
-                    <span class="nav-title">Adm. & Dev</span>
-                    <span class="nav-desc">Sistemas e automações</span>
-                </div>
-            </a>
-
-            <!-- DESATIVADOS -->
+            <!-- 6. LOJA (Novo card desativado) -->
             <div class="nav-item disabled">
-                <div class="nav-icon"><i class="ph ph-wrench"></i></div>
+                <div class="nav-icon"><i class="ph ph-shopping-cart"></i></div>
+                <div class="nav-text">
+                    <span class="nav-title">Loja IdealTech</span>
+                    <span class="nav-desc">Em Breve</span>
+                </div>
+            </div>
+
+            <!-- 7. IDEALTOOLS (Existente desativado) -->
+            <div class="nav-item disabled">
+                <div class="nav-icon"><i class="ph ph-cube"></i></div>
                 <div class="nav-text">
                     <span class="nav-title">IdealTools</span>
                     <span class="nav-desc">Em Breve</span>
                 </div>
             </div>
+
         </div>
 
         <!-- ÁREA CENTRAL (VÍDEO / ANÚNCIOS) -->
@@ -513,14 +493,9 @@
                 <p>Acompanhe nossos lançamentos, tutoriais e soluções em tecnologia.</p>
             </div>
             
-            <div class="video-container">
-                <iframe src="https://player.vimeo.com/video/1218473211?autoplay=1&muted=1&loop=1&background=1" 
-                        width="100%" 
-                        height="100%" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
+            <!-- CONTÊINER DO PLAYER CONTROLADO PELO JS ABAIXO -->
+            <div class="video-container" id="area-de-transmissao">
+                <!-- O iFrame será carregado aqui -->
             </div>
         </div>
 
@@ -531,6 +506,24 @@
     </footer>
 
     <script>
+        // === Módulo de Transmissão (Vimeo / Live) ===
+        // Mude para "true" para transmitir a Live, ou "false" para rodar o Vimeo padrão
+        const modoAoVivo = true; 
+
+        // Link padrão de propaganda no Vimeo
+        const linkVimeo = "https://player.vimeo.com/video/1218473211?autoplay=1&muted=1&loop=1&background=1"; 
+        
+        // Link de incorporação (embed) da Live (Kick, YouTube, Twitch)
+        const linkEventoLive = "https://player.kick.com/mix_master_nilson"; 
+        
+        const areaTransmissao = document.getElementById('area-de-transmissao');
+        
+        if (modoAoVivo === true) {
+            areaTransmissao.innerHTML = `<iframe src="${linkEventoLive}" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+        } else {
+            areaTransmissao.innerHTML = `<iframe src="${linkVimeo}" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+        }
+
         // === Busca de Aplicativos ===
         function buscarApp() {
             const codigo = document.getElementById('inputAppCode').value.trim();
