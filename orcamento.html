@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdealTech ⎯ Solicitação de Orçamento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0f1d; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .form-container { background: rgba(20, 29, 45, 0.8); padding: 30px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); width: 100%; max-width: 450px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h2 { margin-top: 0; color: #3b82f6; font-size: 1.5rem; text-align: center; }
+        p { color: #94a3b8; font-size: 0.85rem; text-align: center; margin-bottom: 25px; }
+        label { display: block; margin-top: 15px; font-size: 0.85rem; color: #cbd5e1; font-weight: 600; }
+        input, select, textarea { width: 100%; padding: 12px; margin-top: 5px; border-radius: 6px; border: 1px solid #28374d; background: #0d1524; color: #fff; box-sizing: border-box; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
+        input:focus, select:focus, textarea:focus { border-color: #3b82f6; outline: none; }
+        button { margin-top: 25px; width: 100%; background: #3b82f6; color: #fff; border: none; padding: 14px; border-radius: 6px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #2563eb; }
+        
+        #box-servico { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Solicitar Orçamento</h2>
+        <p>Selecione a área de interesse para receber uma proposta sob medida.</p>
+        
+        <label for="nome">Nome ou Empresa</label>
+        <input type="text" id="nome" placeholder="Como devemos chamar você?" required>
+
+        <label for="telefone">WhatsApp (com DDD)</label>
+        <input type="text" id="telefone" placeholder="(00) 00000-0000" maxlength="15" required>
+
+        <label for="categoria">Área de Interesse</label>
+        <select id="categoria" onchange="atualizarServicos()" required>
+            <option value="" disabled selected>Selecione uma área...</option>
+            <option value="Manutenção de Equipamentos">Manutenção de Equipamentos</option>
+            <option value="Automação e Desenvolvimento">Automação e Desenvolvimento Web</option>
+            <option value="Serviços Administrativos">Serviços Administrativos Digitais</option>
+            <option value="Suporte e Tecnologia">Suporte e Tecnologia (Nuvem/Remoto)</option>
+        </select>
+
+        <div id="box-servico">
+            <label for="servico">Serviço Específico</label>
+            <select id="servico" required>
+                <option value="" disabled selected>Selecione o serviço...</option>
+            </select>
+        </div>
+
+        <label for="descricao">Detalhes da Solicitação</label>
+        <textarea id="descricao" rows="4" placeholder="Explique resumidamente o que você precisa ou qual problema deseja resolver..." required></textarea>
+
+        <button onclick="enviarParaWhatsApp()">Enviar Solicitação</button>
+    </div>
+
+    <script>
+        // Mapeamento dos serviços baseados na Landing Page
+        const catalogo = {
+            "Manutenção de Equipamentos": [
+                "Computadores e Notebooks (Formatação, Limpeza, Upgrade)",
+                "Celulares Android (Tela, Bateria, Sistema)",
+                "Outro equipamento"
+            ],
+            "Automação e Desenvolvimento": [
+                "Automação (Bots para WhatsApp/Telegram)",
+                "Desenvolvimento Web (Landing Pages, Dashboards)",
+                "Ferramentas e Planilhas Internas"
+            ],
+            "Serviços Administrativos": [
+                "Organização de Arquivos e Nuvem",
+                "Padronização de Documentos (Contratos, Recibos)",
+                "Organização Financeira Básica"
+            ],
+            "Suporte e Tecnologia": [
+                "Suporte Técnico Remoto",
+                "Gestão de Nuvem (Google Drive/OneDrive)",
+                "Consultoria Tecnológica"
+            ]
+        };
+
+        // Aplica a máscara de telefone dinamicamente
+        document.getElementById('telefone').addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+
+        // Atualiza o segundo menu suspenso
+        function atualizarServicos() {
+            const categoria = document.getElementById('categoria').value;
+            const selectServico = document.getElementById('servico');
+            const boxServico = document.getElementById('box-servico');
+            
+            selectServico.innerHTML = '<option value="" disabled selected>Selecione o serviço...</option>';
+            
+            if (categoria && catalogo[categoria]) {
+                catalogo[categoria].forEach(servico => {
+                    let option = document.createElement('option');
+                    option.value = servico;
+                    option.text = servico;
+                    selectServico.appendChild(option);
+                });
+                boxServico.style.display = 'block';
+            } else {
+                boxServico.style.display = 'none';
+            }
+        }
+
+        // Função de disparo
+        function enviarParaWhatsApp() {
+            const nome = document.getElementById('nome').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+            const categoria = document.getElementById('categoria').value;
+            const servico = document.getElementById('servico').value;
+            const descricao = document.getElementById('descricao').value.trim();
+
+            if(!nome || !telefone || !categoria || !servico || !descricao) {
+                alert("Por favor, preencha todos os campos para continuarmos.");
+                return;
+            }
+
+            const mensagem = `🚨 *NOVO LEAD / ORÇAMENTO* 🚨\n\n*Cliente:* ${nome}\n*WhatsApp:* ${telefone}\n*Área:* ${categoria}\n*Serviço:* ${servico}\n*Detalhes:* ${descricao}`;
+            const textoCodificado = encodeURIComponent(mensagem);
+            
+            const numeroDestino = "5548998273891"; 
+            
+            const urlWhatsApp = `https://wa.me/${numeroDestino}?text=${textoCodificado}`;
+            window.open(urlWhatsApp, '_blank');
+            
+            // Fecha a aba após 500 milissegundos
+            setTimeout(function() {
+                window.close();
+            }, 500);
+        }
+    </script>
+</body>
+</html>
