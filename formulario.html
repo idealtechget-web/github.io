@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Empresarial | IdealTech</title>
+    <style>
+        :root {
+            --color-dark: #071326;
+            --color-secondary-dark: #002B49;
+            --color-teal: #17B890;
+            --color-teal-hover: #139C7A;
+            --color-light-bg: #F3F6F9;
+            --color-white: #FFFFFF;
+            --color-text: #333333;
+            --color-placeholder: #888888;
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.06);
+            --radius-card: 16px;
+            --radius-input: 8px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--color-light-bg); color: var(--color-text); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+
+        /* ==================== HEADER IDENTIDADE (IDEALTECH) ==================== */
+        header {
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-secondary-dark) 100%);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-bottom: 4px solid var(--color-teal);
+        }
+
+        .header-content { max-width: 900px; margin: 0 auto; }
+        
+        /* Recriando visual do logo da IdealTech em CSS */
+        .logo-visual {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .logo-visual span.ideal { font-size: 2.5rem; font-weight: 800; color: var(--color-white); letter-spacing: -1px; }
+        .logo-visual span.tech { font-size: 2.5rem; font-weight: 800; color: var(--color-teal); letter-spacing: -1px; }
+        .badge-icone {
+            background-color: var(--color-teal);
+            color: var(--color-dark);
+            font-weight: 900;
+            font-size: 1.5rem;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transform: rotate(10deg);
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .badge {
+            background-color: var(--color-teal);
+            color: var(--color-white);
+            font-weight: bold;
+            font-size: 0.85rem;
+            padding: 6px 15px;
+            border-radius: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(23, 184, 144, 0.4);
+        }
+
+        header h1 { font-size: 2rem; font-weight: 800; margin: 10px 0 0; text-transform: uppercase; letter-spacing: 1px; }
+        header p { font-size: 1rem; color: #B0C4DE; max-width: 600px; margin: 10px auto 0; }
+
+        /* ==================== MAIN / FORM ==================== */
+        main { flex: 1; max-width: 800px; margin: 40px auto; padding: 0 20px; width: 100%; }
+
+        .section-card {
+            background-color: var(--color-white);
+            border-radius: var(--radius-card);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-secondary-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--color-teal);
+            padding-bottom: 15px;
+        }
+
+        .section-title span { color: var(--color-teal); font-size: 1.4rem; }
+
+        .question-group { margin-bottom: 25px; }
+        .question-group label { display: block; margin-bottom: 10px; font-weight: 600; color: #444; }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #E0E0E0;
+            border-radius: var(--radius-input);
+            background-color: #FAFAFA;
+            color: var(--color-text);
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+            transition: all 0.3s ease;
+        }
+
+        textarea::placeholder { color: var(--color-placeholder); font-size: 0.95rem; }
+        textarea:focus {
+            outline: none;
+            border-color: var(--color-teal);
+            background-color: var(--color-white);
+            box-shadow: 0 0 0 4px rgba(23, 184, 144, 0.15);
+        }
+
+        /* ==================== BOTÃO FIXO ==================== */
+        .whatsapp-footer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366; /* Verde WhatsApp */
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid var(--color-white);
+        }
+
+        .btn-whatsapp:hover { background-color: #128C7E; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(23, 184, 144, 0.5); }
+        .btn-whatsapp svg { width: 24px; height: 24px; fill: white; }
+
+        /* ==================== RESPONSIVIDADE ==================== */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.5rem; }
+            .section-card { padding: 20px; }
+            .logo-visual span { font-size: 2rem; }
+            
+            .btn-whatsapp { padding: 12px 20px; font-size: 0.95rem; right: 15px; bottom: 15px; }
+            .btn-whatsapp span { display: none; }
+            .btn-whatsapp::after { content: "Enviar"; display: block; }
+        }
+
+        main { padding-bottom: 120px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <!-- LOGOTIPO RECRIADO EM CSS (Sem precisar colar imagem Base64) -->
+            <div class="logo-visual">
+                <span class="ideal">IDEAL</span>
+                <span class="tech">TECH</span>
+                <div class="badge-icone">IT</div>
+            </div>
+
+            <span class="badge">Diagnóstico Empresarial</span>
+            <h1>Questionário para Implantação de Sistema</h1>
+            <p>Responda as perguntas abaixo com o máximo de detalhes. Seu progresso é salvo automaticamente.</p>
+        </div>
+    </header>
+
+    <main>
+        <form id="form-diagnostico">
+            <!-- SEÇÃO 1 -->
+            <div class="section-card">
+                <h2 class="section-title"><span>1.</span> Entrada de Mercadorias / Matéria-Prima</h2>
+                
+                <div class="question-group">
+                    <label for="q_1_1">1.1 Como funciona o momento exato em que o material chega na sua empresa? Você compra por unidade, peso (Kg/tonelada), lote ou volume?</label>
+                    <textarea id="q_1_1" name="q_1_1" placeholder="Ex: Compro por quilo. Quando o caminhão chega, pesamos na balança e anotamos o peso total em uma planilha..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label for="q_1_2">1.2 No momento da entrada, quais informações você precisa anotar na hora (nome do fornecedor, tipo de material, valor pago, desconto, forma de pagamento)?</label>
+                    <textarea id="q_1_2" name="q_1_2" placeholder="Ex: Preciso anotar o nome do fornecedor, qual material é, o valor total da carga e se tem desconto..."></textarea>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 2 -->
+            <div class="section-card">
+                <h2 class="section-title"><span>2.</span> Rotina de Estoque e Processamento</h2>
+
+                <div class="question-group">
+                    <label for="q_2_1">2.1 O que você compra é vendido do mesmo jeito que entrou ou o produto passa por alguma transformação/separação antes de ir para a venda?</label>
+                    <textarea id="q_2_1" name="q_2_1" placeholder="Ex: Compro por peso, mas vendo por unidade após separar em porções no açougue..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label for="q_2_2">2.2 Como você controla o que está disponível no seu estoque hoje (caderno, planilha, contagem visual)?</label>
+                    <textarea id="q_2_2" name="q_2_2" placeholder="Ex: Hoje é no caderno, mas quase sempre me perco nas contas..."></textarea>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 3 -->
+            <div class="section-card">
+                <h2 class="section-title"><span>3.</span> Gestão de Perdas e Descartes</h2>
+
+                <div class="question-group">
+                    <label for="q_3_1">3.1 Onde e como costuma acontecer perda de material no seu dia a dia (sobra, descarte, quebra, sujeira)?</label>
+                    <textarea id="q_3_1" name="q_3_1" placeholder="Ex: Perco muito na limpeza (sujeira, partes ruins) e também acontece de estragar..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label for="q_3_2">3.2 O que você precisa enxergar sobre essas perdas: apenas o total que foi jogado fora ou o quanto de dinheiro foi perdido com isso?</label>
+                    <textarea id="q_3_2" name="q_3_2" placeholder="Ex: Preciso saber o quanto de dinheiro estou perdendo, porque só sei que 'sumiu' mercadoria..."></textarea>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 4 -->
+            <div class="section-card">
+                <h2 class="section-title"><span>4.</span> Saída de Mercadorias e Vendas</h2>
+
+                <div class="question-group">
+                    <label for="q_4_1">4.1 Como é feita a venda para o cliente final? É à vista, a prazo, por unidade ou por peso?</label>
+                    <textarea id="q_4_1" name="q_4_1" placeholder="Ex: Vendo no balcão por peso ou unidade, e geralmente recebo à vista..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label for="q_4_2">4.2 Você precisa emitir algum comprovante/recibo para o cliente na hora da venda?</label>
+                    <textarea id="q_4_2" name="q_4_2" placeholder="Ex: Sim, eu preciso dar um papelzinho (recibo) ou imprimir uma via para o cliente levar..."></textarea>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 5 -->
+            <div class="section-card">
+                <h2 class="section-title"><span>5.</span> Visão Financeira e Resultados</h2>
+
+                <div class="question-group">
+                    <label for="q_5_1">5.1 O que você considera "lucro" no final do mês? É apenas Venda - Custo de Compra ou você precisa abater despesas extras do negócio (energia, combustível, frete, manutenção de máquinas)?</label>
+                    <textarea id="q_5_1" name="q_5_1" placeholder="Ex: Sei que tenho que tirar o que gastei comprando, mas também pago luz..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label for="q_5_2">5.2 Quais relatórios ou resumos você sonha em ver na tela com um clique para tomar decisões?</label>
+                    <textarea id="q_5_2" name="q_5_2" placeholder="Ex: Sonho em abrir o celular e ver: Quanto vendi ontem, quanto gastei, o que está quase acabando..."></textarea>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 6 -->
+            <div class="section-card">
+                <h2 class="section-title"><span>6.</span> Dia a Dia com o Sistema</h2>
+
+                <div class="question-group">
+                    <label for="q_6_1">6.1 Quem vai operar o sistema no dia a dia?</label>
+                    <textarea id="q_6_1" name="q_6_1" placeholder="Ex: Eu e minha esposa operamos, e em alguns períodos o meu filho mais novo ajuda no caixa..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label for="q_6_2">6.2 O computador onde o sistema vai ficar tem acesso constante à internet ou precisa funcionar 100% desconectado?</label>
+                    <textarea id="q_6_2" name="q_6_2" placeholder="Ex: A internet da minha loja cai quase toda semana. Preciso que o sistema não pare de funcionar..."></textarea>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- BOTÃO FIXO WHATSAPP -->
+    <div class="whatsapp-footer">
+        <button type="button" class="btn-whatsapp" onclick="enviarWhatsApp()">
+            <!-- Ícone SVG WhatsApp -->
+            <svg viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span>Enviar Respostas para IdealTech</span>
+        </button>
+    </div>
+
+    <!-- JAVASCRIPT: PERSISTÊNCIA + ENVIO E AUTODESTRUIÇÃO -->
+    <script>
+        // Chave usada para salvar os dados localmente
+        const chaveStorage = 'form_diagnostico_idealt ech';
+
+        // Função para carregar os dados salvos quando a página abre
+        window.onload = function() {
+            const dadosSalvos = localStorage.getItem(chaveStorage);
+            if (dadosSalvos) {
+                const respostas = JSON.parse(dadosSalvos);
+                
+                // Percorre cada campo do formulário e insere o valor salvo
+                const campos = document.querySelectorAll('textarea');
+                campos.forEach(campo => {
+                    if (respostas[campo.id] !== undefined) {
+                        campo.value = respostas[campo.id];
+                    }
+                });
+            }
+        };
+
+        // Função para salvar os dados automaticamente a cada tecla digitada
+        const camposFormulario = document.querySelectorAll('textarea');
+        camposFormulario.forEach(campo => {
+            campo.addEventListener('input', function() {
+                const respostas = {};
+                
+                // Coleta todos os valores atuais
+                camposFormulario.forEach(c => {
+                    respostas[c.id] = c.value;
+                });
+
+                // Salva no navegador
+                localStorage.setItem(chaveStorage, JSON.stringify(respostas));
+            });
+        });
+
+        // Função de Envio e Autodestruição
+        function enviarWhatsApp() {
+            const numeroDestino = "5547933844478";
+
+            const perguntas = [
+                { secao: "1. Entrada de Mercadorias / Matéria-Prima", id: "q_1_1", pergunta: "1.1 Como funciona o momento exato em que o material chega na sua empresa? Você compra por unidade, peso (Kg/tonelada), lote ou volume?" },
+                { secao: "1. Entrada de Mercadorias / Matéria-Prima", id: "q_1_2", pergunta: "1.2 No momento da entrada, quais informações você precisa anotar na hora (nome do fornecedor, tipo de material, valor pago, desconto, forma de pagamento)?" },
+                
+                { secao: "2. Rotina de Estoque e Processamento", id: "q_2_1", pergunta: "2.1 O que você compra é vendido do mesmo jeito que entrou ou o produto passa por alguma transformação/separação antes de ir para a venda?" },
+                { secao: "2. Rotina de Estoque e Processamento", id: "q_2_2", pergunta: "2.2 Como você controla o que está disponível no seu estoque hoje (caderno, planilha, contagem visual)?" },
+                
+                { secao: "3. Gestão de Perdas e Descartes", id: "q_3_1", pergunta: "3.1 Onde e como costuma acontecer perda de material no seu dia a dia (sobra, descarte, quebra, sujeira)?" },
+                { secao: "3. Gestão de Perdas e Descartes", id: "q_3_2", pergunta: "3.2 O que você precisa enxergar sobre essas perdas: apenas o total que foi jogado fora ou o quanto de dinheiro foi perdido com isso?" },
+                
+                { secao: "4. Saída de Mercadorias e Vendas", id: "q_4_1", pergunta: "4.1 Como é feita a venda para o cliente final? É à vista, a prazo, por unidade ou por peso?" },
+                { secao: "4. Saída de Mercadorias e Vendas", id: "q_4_2", pergunta: "4.2 Você precisa emitir algum comprovante/recibo para o cliente na hora da venda?" },
+                
+                { secao: "5. Visão Financeira e Resultados", id: "q_5_1", pergunta: "5.1 O que você considera 'lucro' no final do mês? É apenas Venda - Custo de Compra ou você precisa abater despesas extras do negócio (energia, combustível, frete, manutenção de máquinas)?" },
+                { secao: "5. Visão Financeira e Resultados", id: "q_5_2", pergunta: "5.2 Quais relatórios ou resumos você sonha em ver na tela com um clique para tomar decisões?" },
+                
+                { secao: "6. Dia a Dia com o Sistema", id: "q_6_1", pergunta: "6.1 Quem vai operar o sistema no dia a dia?" },
+                { secao: "6. Dia a Dia com o Sistema", id: "q_6_2", pergunta: "6.2 O computador onde o sistema vai ficar tem acesso constante à internet ou precisa funcionar 100% desconectado?" }
+            ];
+
+            let mensagem = "*QUESTIONÁRIO PARA IMPLANTAÇÃO DE SISTEMA - IDEALTECH*\n";
+            mensagem += "*Diagnóstico Empresarial*\n";
+            mensagem += "-----------------------------\n\n";
+
+            let ultimaSecao = "";
+
+            perguntas.forEach(item => {
+                if (item.secao !== ultimaSecao) {
+                    ultimaSecao = item.secao;
+                    mensagem += `📌 *${item.secao.toUpperCase()}*\n`;
+                }
+
+                const valor = document.getElementById(item.id).value.trim() || "Não informado";
+
+                mensagem += `• *${item.pergunta}*\n`;
+                mensagem += `   *R:* ${valor}\n\n`;
+            });
+
+            mensagem += "-----------------------------\n";
+            mensagem += "_Respostas enviadas via formulário de diagnóstico._";
+
+            // Limpando o formulário e a persistência (AUTODESTRUIÇÃO)
+            localStorage.removeItem(chaveStorage);
+            camposFormulario.forEach(campo => { campo.value = ''; });
+
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroDestino}&text=${encodeURIComponent(mensagem)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
+</body>
+</html>
