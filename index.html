@@ -339,31 +339,15 @@
             <div class="status-panel">
                 <div class="status-item" title="Status da Infraestrutura de Servidores">
                     <div class="led led-green"></div>
-                    <span>Servidores</span>
+                    <span>Sistemas</span>
                 </div>
-                <div class="status-item" title="Status da Rota Super">
+                <div class="status-item" title="Status da Infraestrutura de Servidores">
                     <div class="led led-green"></div>
-                    <span>Super</span>
+                    <span>ST Play</span>
                 </div>
-                <div class="status-item" title="Status da Rota Pro">
+                <div class="status-item" title="Status da Infraestrutura de Servidores">
                     <div class="led led-green"></div>
-                    <span>Pro</span>
-                </div>
-                <div class="status-item" title="Status da Rota Prime">
-                    <div class="led led-green"></div>
-                    <span>Prime</span>
-                </div>
-                <div class="status-item" title="Status da Rota Slim">
-                    <div class="led led-green"></div>
-                    <span>Slim</span>
-                </div>
-                <div class="status-item" title="Status dos Aplicativos Nativos">
-                    <div class="led led-green"></div>
-                    <span>Aplicativos</span>
-                </div>
-                <div class="status-item" title="Status do Atendimento via WhatsApp">
-                    <div class="led led-green"></div>
-                    <span>Suporte</span>
+                    <span>Apps Parceiros</span>
                 </div>
             </div>
 
@@ -526,8 +510,12 @@
 
         // === Busca de Aplicativos ===
         function buscarApp() {
-            const codigo = document.getElementById('inputAppCode').value.trim();
+            let codigo = document.getElementById('inputAppCode').value.trim();
             if(codigo) {
+                // Adiciona o .html automaticamente se ainda não tiver
+                if(!codigo.toLowerCase().endsWith('.html')) {
+                    codigo += '.html';
+                }
                 window.open(`http://app.idealtech.srv.br/${codigo}`, '_blank');
             } else {
                 alert('Digite o código do aplicativo.');
