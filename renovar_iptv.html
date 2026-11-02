@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Cliente - Zenilson Lacerda</title>
+  
+  <!-- Favicon Personalizado -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAwMCAzMDAwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJ6bEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDA5N0IyIi8+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiMwMDcxOEYiLz48c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iIzBBM0E1QyIvPjxzdG9wIG9mZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxMjI1M0IiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMUUyOTNCIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMEIxMzJCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMTAwMCIgeT0iMTAwMCIgd2lkdGg9IjI4MDAwIiBoZWlnaHQ9IjI4MDAwIiByeD0iNjAwMCIgZmlsbD0idXJsKCNiZykiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLXdpZHRoPSI0MDAiLz48ZyBmaWxsPSJ1cmwoI3psR3JhZCkiPjxwb2x5Z29uIHBvaW50cz0iMTM2OTQuOTgsMjAzOTMuMDMgMjUxNzAuODMsMjAzNDYuNTggMjUyMTkuNjYsMTgxNTAuNTUgMTc3NTQuMTEsMTgxMjUuNjkgMjM4NjQuODEsNzQ5OS4yMSAyMjY4Ny4xNiw1NjkxLjA5Ii8+PHBvbHlnb24gcG9pbnRzPSI3MDU4Ljk0LDI0MDQyLjc1IDI1MjE5Ljc5LDI0MDE5LjAyIDI1MjE5LjMxLDIxNDExLjM0IDExNzUxLjQyLDIxMzY5LjI3IDIxNDc4LjY2LDU2NTguMzEgNDQ3OS4xMSw1Njc3LjE0IDQ0OTIuODQsODE1NS40NyAxNzE5NC45MSw4MTg3LjE0Ii8+PHBhdGggZD0iTTQ1MzQuMiAxMTQzNC4xNWw2MjQ0LjQyIDYuNjcgLTYyODguMTYgOTk0OS45OCAxNTE4Ljk4IDI1ODYuNjkgOTUyMC4xOCAtMTQ5MzUuMDZjLTUyNy42OCwtMjAuODYgLTk5MTkuMjIsLTk0LjM2IC0xMDk0My42NywtNy4yNGwtNTEuNzUgMjM5OC45NnoiLz48L2c+PC9zdmc+">
+
+  <style>
+    /* ===== VARIÁVEIS ===== */
+    :root {
+      --bg-card: #141d2d;
+      --bg-body: #0a0f1d;
+      --border-color: #1e2a3e;
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --text-light: #cbd5e1;
+      --text-muted: #94a3b8;
+      --bg-btn: #233146;
+      --bg-input: #0d1524;
+      --shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      --radius: 12px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===== RESET E BASE ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 30% 10%, #111a2e 0%, var(--bg-body) 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      margin: 0;
+    }
+
+    /* ===== WIDGET DO TOPO (RELÓGIO) ===== */
+    .top-bar {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 20;
+    }
+
+    .glass-widget {
+      background: rgba(20, 29, 45, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border-color);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .time-widget .clock {
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .time-widget .date {
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      padding-left: 12px;
+      text-transform: capitalize;
+    }
+
+    /* ===== CARD PRINCIPAL ===== */
+    .card {
+      background: rgba(20, 29, 45, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      width: 100%;
+      max-width: 440px;
+      padding: 30px 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(30, 42, 62, 0.6);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 10px 50px rgba(59, 130, 246, 0.15);
+    }
+
+    /* ===== CABEÇALHO DO LOGO ===== */
+    .header-fixo {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .brand-logo-img {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      line-height: 1.05;
+    }
+
+    .brand-first {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-second {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+
+    .sub-logo {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ===== CONTEÚDO DA BUSCA ===== */
+    .busca-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .titulo-busca {
+      font-size: 1.15rem;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 2px;
+    }
+
+    .descricao-busca {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    /* ===== INPUTS E DICA ===== */
+    input[type="text"] {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #28374d;
+      background: var(--bg-input);
+      color: #fff;
+      font-size: 1.1rem;
+      outline: none;
+      text-align: center;
+      transition: all var(--transition);
+      letter-spacing: 1px;
+    }
+    input[type="text"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      background: #0f1a2b;
+    }
+    input[type="text"]::placeholder { color: #4a5a7a; font-weight: 300; letter-spacing: normal; }
+
+    .dica-usuario {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-align: center;
+      font-style: italic;
+      margin-top: -4px;
+      margin-bottom: 8px;
+    }
+    .dica-usuario strong {
+      color: var(--text-muted);
+    }
+
+    /* ===== BOTÕES ===== */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px;
+      background: var(--bg-btn);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 1px solid #33435c;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition);
+      gap: 8px;
+    }
+    
+    .btn-destaque {
+      background: #1e3a8a;
+      border-color: var(--primary);
+      animation: pulse-glow 2.5s infinite;
+    }
+    .btn-destaque:hover {
+      background: var(--primary-dark);
+      border-color: #60a5fa;
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+      transform: translateY(-2px);
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3); }
+      50% { box-shadow: 0 0 20px 4px rgba(59, 130, 246, 0.15); }
+    }
+
+    .btn-esqueci-dados {
+      background: transparent;
+      border: 1px dashed #475569;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 5px;
+      display: block;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .btn-esqueci-dados:hover {
+      border-color: var(--primary);
+      color: #fff;
+      background: rgba(59, 130, 246, 0.05);
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
+    @media (max-width: 480px) {
+      .top-bar { position: relative; top: 0; right: 0; justify-content: center; margin-bottom: 20px; }
+      .card { margin-top: 0; border-radius: 0; border: none; box-shadow: none; padding: 20px 16px; background: transparent; backdrop-filter: none; }
+      body { padding: 0; justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BARRA SUPERIOR (Relógio Global) -->
+<div class="top-bar">
+  <div class="glass-widget time-widget">
+    <span class="clock" id="liveClock">00:00:00</span>
+    <span class="date" id="liveDate">Carregando...</span>
+  </div>
+</div>
+
+<div class="card">
+  <!-- ===== CABEÇALHO DO LOGO ===== -->
+  <div class="header-fixo">
+    <div class="brand-header">
+      <svg class="brand-logo-img" viewBox="0 0 30000 30000" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="zlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#0097B2"/>
+            <stop offset="40%" stop-color="#00718F"/>
+            <stop offset="70%" stop-color="#0A3A5C"/>
+            <stop offset="100%" stop-color="#12253B"/>
+          </linearGradient>
+          <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1E293B"/>
+            <stop offset="100%" stop-color="#0B132B"/>
+          </linearGradient>
+        </defs>
+        <rect x="1000" y="1000" width="28000" height="28000" rx="6000" fill="url(#bg)" stroke="#334155" stroke-width="400"/>
+        <g fill="url(#zlGrad)">
+          <polygon points="13694.98,20393.03 25170.83,20346.58 25219.66,18150.55 17754.11,18125.69 23864.81,7499.21 22687.12,5691.09"/>
+          <polygon points="7058.94,24042.75 25219.79,24019.02 25219.31,21411.34 11751.42,21369.27 21478.66,5658.31 4479.11,5677.14 4492.84,8155.47 17194.91,8187.14"/>
+          <path d="M4534.2 11434.15l6244.42 6.67 -6288.16 9949.98 1518.98 2586.69 9520.18 -14935.06c-527.68,-20.86 -9919.22,-94.36 -10943.67,-7.24l-51.75 2398.96z"/>
+        </g>
+      </svg>
+      <div class="brand-text">
+        <span class="brand-first">ZENILSON</span>
+        <span class="brand-second">LACERDA</span>
+      </div>
+    </div>
+    <div class="sub-logo">CENTRAL DE ASSINANTES</div>
+  </div>
+
+  <!-- ===== ÁREA DE BUSCA ===== -->
+  <div class="busca-container">
+    <h2 class="titulo-busca">Consultar Usuário</h2>
+    <p class="descricao-busca">Digite seu código de usuário abaixo para acessar seu painel de renovação e credenciais.</p>
+    
+    <input type="text" id="input-usuario" placeholder="Ex: 471234" maxlength="20" onkeypress="verificarEnter(event)">
+    
+    <div class="dica-usuario">
+      💡 Dica: Seu acesso é o <strong>DDD + os 4 últimos dígitos</strong> do seu telefone.
+    </div>
+    
+    <button id="btn-buscar" class="btn btn-destaque" onclick="buscarCliente()">
+      🔍 ACESSAR PAINEL
+    </button>
+
+    <a href="https://wa.me/5547988666971?text=Olá!%20Esqueci%20meu%20código%20de%20usuário,%20poderia%20me%20ajudar?" target="_blank" class="btn-esqueci-dados">
+      🤔 Não sei meu usuário / Esqueci meus dados
+    </a>
+  </div>
+</div>
+
+<script>
+  // ===== LÓGICA DO RELÓGIO =====
+  function updateTime() {
+    const now = new Date();
+    document.getElementById('liveClock').textContent = 
+      String(now.getHours()).padStart(2, '0') + ':' + 
+      String(now.getMinutes()).padStart(2, '0') + ':' + 
+      String(now.getSeconds()).padStart(2, '0');
+
+    document.getElementById('liveDate').textContent = 
+      now.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: 'short' }).replace('.', '');
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+
+  // ===== LÓGICA DE BUSCA E REDIRECIONAMENTO =====
+  function buscarCliente() {
+    const usuarioInput = document.getElementById('input-usuario');
+    const usuario = usuarioInput.value.trim();
+    
+    if (!usuario) { 
+      alert('⚠️ Por favor, digite seu código de usuário.'); 
+      usuarioInput.focus();
+      return; 
+    }
+
+    const btn = document.getElementById('btn-buscar');
+    const originalText = btn.innerHTML;
+    
+    btn.innerHTML = '⏳ Localizando...'; 
+    btn.disabled = true;
+    
+    setTimeout(() => {
+      window.location.href = `./clientes/${usuario}.html`;
+      
+      btn.innerHTML = originalText; 
+      btn.disabled = false;
+    }, 500);
+  }
+
+  function verificarEnter(event) {
+    if (event.key === 'Enter') {
+      buscarCliente();
+    }
+  }
+</script>
+
+</body>
+</html>

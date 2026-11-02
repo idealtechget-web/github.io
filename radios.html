@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0f1d">
+    <meta name="description" content="Rádio Web Zenilson Lacerda — ouça suas estações favoritas online.">
+    <title>Rádio Web | Zenilson Lacerda</title>
+
+    <!-- Favicon Personalizado -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAwMCAzMDAwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJ6bEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDA5N0IyIi8+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiMwMDcxOEYiLz48c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iIzBBM0E1QyIvPjxzdG9wIG9mZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxMjI1M0IiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMUUyOTNCIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMEIxMzJCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMTAwMCIgeT0iMTAwMCIgd2lkdGg9IjI4MDAwIiBoZWlnaHQ9IjI4MDAwIiByeD0iNjAwMCIgZmlsbD0idXJsKCNiZykiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLXdpZHRoPSI0MDAiLz48ZyBmaWxsPSJ1cmwoI3psR3JhZCkiPjxwb2x5Z29uIHBvaW50cz0iMTM2OTQuOTgsMjAzOTMuMDMgMjUxNzAuODMsMjAzNDYuNTggMjUyMTkuNjYsMTgxNTAuNTUgMTc3NTQuMTEsMTgxMjUuNjkgMjM4NjQuODEsNzQ5OS4yMSAyMjY4Ny4xMiw1NjkxLjA5Ii8+PHBvbHlnb24gcG9pbnRzPSI3MDU4Ljk0LDI0MDQyLjc1IDI1MjE5Ljc5LDI0MDE5LjAyIDI1MjE5LjMxLDIxNDExLjM0IDExNzUxLjQyLDIxMzY5LjI3IDIxNDc4LjY2LDU2NTguMzEgNDQ3OS4xMSw1Njc3LjE0IDQ0OTIuODQsODE1NS40NyAxNzE5NC45MSw4MTg3LjE0Ii8+PHBhdGggZD0iTTQ1MzQuMiAxMTQzNC4xNWw2MjQ0LjQyIDYuNjcgLTYyODguMTYgOTk0OS45OCAxNTE4Ljk4IDI1ODYuNjkgOTUyMC4xOCAtMTQ5MzUuMDZjLTUyNy42OCwtMjAuODYgLTk5MTkuMjIsLTk0LjM2IC0xMDk0My42NywtNy4yNGwtNTEuNzUgMjM5OC45NnoiLz48L2c+PC9zdmc+">
+
+    <!-- Fontes e Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        :root {
+            --bg-card: rgba(20, 29, 45, 0.85);
+            --bg-body: #0a0f1d;
+            --bg-deep: #0d1524;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --text-light: #cbd5e1;
+            --text-muted: #94a3b8;
+            --danger: #ef4444;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body { height: 100%; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: #fff;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .bg-animation {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(96, 165, 250, 0.05), transparent 25%);
+            background-size: 200% 200%;
+            animation: bgDrift 15s ease infinite alternate;
+        }
+
+        @keyframes bgDrift {
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .player-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+        }
+
+        /* CABEÇALHO DO LOGO */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+
+        .brand-logo-img {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            line-height: 1.05;
+        }
+
+        .brand-first {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-second {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+
+        .sub-logo {
+            margin: 0.5rem 0 2rem;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .visualizer {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
+            transition: background var(--transition), border-color var(--transition),
+                        color var(--transition), box-shadow var(--transition);
+        }
+
+        .visualizer i { pointer-events: none; }
+
+        .playing .visualizer {
+            animation: pulse-glow 2s infinite;
+            border-color: var(--primary);
+            color: #fff;
+            background: var(--primary);
+        }
+
+        @keyframes pulse-glow {
+            0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+            50%  { transform: scale(1.05); box-shadow: 0 0 20px 10px rgba(59, 130, 246, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+        .station-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .station-group label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .radio-select {
+            width: 100%;
+            padding: 12px 42px 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background-color: var(--bg-deep);
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+            transition: border-color var(--transition), box-shadow var(--transition);
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .radio-select:focus-visible {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .radio-select option {
+            background: var(--bg-deep);
+            color: #fff;
+            padding: 10px;
+        }
+
+        .controls-wrapper { margin-bottom: 1.75rem; }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .play-btn {
+            flex: 0 0 auto;
+            background: var(--primary);
+            border: none;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .play-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .play-btn:active { transform: scale(0.97); }
+
+        .spin { animation: spin 1s linear infinite; }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1 1 auto;
+            margin-left: 20px;
+            min-width: 0;
+        }
+
+        .volume-btn {
+            background: none;
+            border: none;
+            padding: 4px;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: color var(--transition);
+            flex: 0 0 auto;
+        }
+
+        .volume-btn:hover { color: #fff; }
+
+        .volume-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            min-width: 0;
+            height: 6px;
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+            background: linear-gradient(
+                to right,
+                var(--primary) 0%,
+                var(--primary) var(--vol, 80%),
+                rgba(255, 255, 255, 0.12) var(--vol, 80%),
+                rgba(255, 255, 255, 0.12) 100%
+            );
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .volume-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+        .volume-slider::-moz-range-track {
+            height: 6px;
+            border-radius: 3px;
+            background: transparent;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border: none;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.75rem;
+            margin-top: 12px;
+            font-weight: 600;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            line-height: 1.4;
+        }
+
+        .error-message.visible {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-voltar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color var(--transition), background var(--transition), border-color var(--transition);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            background: none;
+            font-family: inherit;
+        }
+
+        .btn-voltar:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        @media (max-width: 380px) {
+            .player-card { padding: 2rem 1.25rem; }
+            .visualizer { width: 96px; height: 96px; font-size: 3.2rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .bg-animation { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation" aria-hidden="true"></div>
+
+    <main class="player-card" id="playerWrapper">
+
+        <!-- LOGO SVG + NOME (ZENILSON / LACERDA) -->
+        <div class="brand-header">
+            <svg class="brand-logo-img" viewBox="0 0 30000 30000" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="zlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#0097B2"/>
+                        <stop offset="40%" stop-color="#00718F"/>
+                        <stop offset="70%" stop-color="#0A3A5C"/>
+                        <stop offset="100%" stop-color="#12253B"/>
+                    </linearGradient>
+                    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1E293B"/>
+                        <stop offset="100%" stop-color="#0B132B"/>
+                    </linearGradient>
+                </defs>
+                <rect x="1000" y="1000" width="28000" height="28000" rx="6000" fill="url(#bg)" stroke="#334155" stroke-width="400"/>
+                <g fill="url(#zlGrad)">
+                    <polygon points="13694.98,20393.03 25170.83,20346.58 25219.66,18150.55 17754.11,18125.69 23864.81,7499.21 22687.12,5691.09"/>
+                    <polygon points="7058.94,24042.75 25219.79,24019.02 25219.31,21411.34 11751.42,21369.27 21478.66,5658.31 4479.11,5677.14 4492.84,8155.47 17194.91,8187.14"/>
+                    <path d="M4534.2 11434.15l6244.42 6.67 -6288.16 9949.98 1518.98 2586.69 9520.18 -14935.06c-527.68,-20.86 -9919.22,-94.36 -10943.67,-7.24l-51.75 2398.96z"/>
+                </g>
+            </svg>
+            <div class="brand-text">
+                <span class="brand-first">ZENILSON</span>
+                <span class="brand-second">LACERDA</span>
+            </div>
+        </div>
+        <div class="sub-logo">Rádio Web</div>
+
+        <div class="visualizer" aria-hidden="true">
+            <i class="ph ph-headphones" id="visualizerIcon"></i>
+        </div>
+
+        <div class="station-group">
+            <label for="stationSelect">Estação Atual</label>
+            <select class="radio-select" id="stationSelect">
+                <option value="https://antenaone.crossradio.com.br/stream/1/" selected>Antena 1</option>
+                <option value="https://live.hunter.fm/sertanejo_high">Sertanejo</option>
+                <option value="https://live.hunter.fm/pagode_high">Pagode &amp; Samba</option>
+                <option value="https://hts01.brascast.com:9752/live?t=1789696324536">Eletrônica</option>
+                <option value="https://stream1.dancewave.online:8082/dance.flac.ogg">Dance Wave</option>
+                <option value="https://play.streamafrica.net/lofiradio">Lo-Fi Radio (Ambiente &amp; Foco)</option>
+            </select>
+        </div>
+
+        <div class="controls-wrapper">
+            <div class="controls">
+                <button class="play-btn" id="playBtn" type="button"
+                        aria-label="Reproduzir" aria-pressed="false">
+                    <i class="ph ph-play" id="playIcon" aria-hidden="true"></i>
+                </button>
+
+                <div class="volume-container">
+                    <button class="volume-btn" id="volumeBtn" type="button" aria-label="Silenciar">
+                        <i class="ph ph-speaker-high" id="volumeIcon" aria-hidden="true"></i>
+                    </button>
+                    <input type="range" id="volumeControl" class="volume-slider"
+                           min="0" max="1" step="0.01" value="0.8"
+                           aria-label="Volume">
+                </div>
+            </div>
+
+            <p id="errorMsg" class="error-message" role="alert" aria-live="polite">
+                <i class="ph ph-warning-circle" aria-hidden="true"></i>
+                <span>Erro ao conectar com a rádio.</span>
+            </p>
+        </div>
+
+        <button type="button" id="btnVoltar" class="btn-voltar">
+            <i class="ph ph-arrow-left" aria-hidden="true"></i> Voltar ao Hub
+        </button>
+
+        <audio id="audioStream" preload="none" playsinline></audio>
+
+    </main>
+
+    <footer>
+        ZENILSON LACERDA © 2026 ⎯ SOLUÇÕES E TECNOLOGIA
+    </footer>
+
+    <script>
+    (function () {
+        'use strict';
+
+        /* ---------------- Elementos ---------------- */
+        const audio         = document.getElementById('audioStream');
+        const playBtn       = document.getElementById('playBtn');
+        const playIcon      = document.getElementById('playIcon');
+        const stationSelect = document.getElementById('stationSelect');
+        const playerWrapper = document.getElementById('playerWrapper');
+        const volumeControl = document.getElementById('volumeControl');
+        const volumeBtn     = document.getElementById('volumeBtn');
+        const volumeIcon    = document.getElementById('volumeIcon');
+        const errorMsg      = document.getElementById('errorMsg');
+        const errorText     = errorMsg.querySelector('span');
+        const btnVoltar     = document.getElementById('btnVoltar');
+
+        /* ---------------- Estado ---------------- */
+        const STREAM_TIMEOUT = 15000;
+        const DEFAULT_VOLUME = 0.8;
+
+        let isPlaying  = false;
+        let isLoading  = false;
+        let loadTimer  = null;
+        let lastVolume = DEFAULT_VOLUME;
+
+        audio.volume = DEFAULT_VOLUME;
+
+        /* ---------------- Utilitários ---------------- */
+        function setPlayIcon(cls) {
+            playIcon.className = 'ph ' + cls;
+        }
+
+        function showError(msg) {
+            errorText.textContent = msg;
+            errorMsg.classList.add('visible');
+        }
+
+        function hideError() {
+            errorMsg.classList.remove('visible');
+        }
+
+        function clearTimer() {
+            if (loadTimer) {
+                clearTimeout(loadTimer);
+                loadTimer = null;
+            }
+        }
+
+        function setLoadingState() {
+            isLoading = true;
+            isPlaying = false;
+            setPlayIcon('ph-spinner-gap spin');
+            playerWrapper.classList.remove('playing');
+            playBtn.setAttribute('aria-label', 'Cancelar');
+            playBtn.setAttribute('aria-pressed', 'false');
+        }
+
+        function resetUI() {
+            clearTimer();
+            isLoading = false;
+            isPlaying = false;
+            setPlayIcon('ph-play');
+            playerWrapper.classList.remove('playing');
+            playBtn.setAttribute('aria-label', 'Reproduzir');
+            playBtn.setAttribute('aria-pressed', 'false');
+        }
+
+        function currentStationName() {
+            const opt = stationSelect.options[stationSelect.selectedIndex];
+            return opt ? opt.textContent.trim() : 'Rádio Web';
+        }
+
+        /* ---------------- Media Session ---------------- */
+        function updateMediaSession() {
+            if (!('mediaSession' in navigator) || typeof MediaMetadata === 'undefined') return;
+            try {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title:  currentStationName(),
+                    artist: 'Zenilson Lacerda Rádio Web',
+                    album:  'Rádio Web Zenilson Lacerda'
+                });
+            } catch (e) { /* silencioso */ }
+        }
+
+        function updatePlaybackState(state) {
+            if (!('mediaSession' in navigator)) return;
+            try { navigator.mediaSession.playbackState = state; } catch (e) {}
+        }
+
+        /* ---------------- Controle de volume ---------------- */
+        function updateVolumeUI() {
+            const v = audio.volume;
+
+            volumeControl.value = v;
+            volumeControl.style.setProperty('--vol', (v * 100) + '%');
+
+            if (v === 0)        volumeIcon.className = 'ph ph-speaker-x';
+            else if (v < 0.5)   volumeIcon.className = 'ph ph-speaker-low';
+            else                volumeIcon.className = 'ph ph-speaker-high';
+
+            volumeBtn.setAttribute('aria-label', v === 0 ? 'Ativar som' : 'Silenciar');
+        }
+
+        /* ---------------- Play / Stop ---------------- */
+        function playRadio() {
+            hideError();
+            setLoadingState();
+            clearTimer();
+
+            audio.src = stationSelect.value;
+            audio.load();
+
+            loadTimer = setTimeout(function () {
+                if (!isPlaying) {
+                    audio.pause();
+                    resetUI();
+                    showError('Não foi possível conectar. Verifique sua conexão ou tente outra estação.');
+                }
+            }, STREAM_TIMEOUT);
+
+            const promise = audio.play();
+            if (promise && typeof promise.then === 'function') {
+                promise.catch(function (err) {
+                    if (err && err.name === 'AbortError') return;
+                    clearTimer();
+                    resetUI();
+                    if (err && err.name === 'NotAllowedError') {
+                        showError('Toque no botão de play para iniciar a reprodução.');
+                    }
+                });
+            }
+        }
+
+        function stopRadio() {
+            clearTimer();
+            audio.pause();
+            resetUI();
+            updatePlaybackState('paused');
+        }
+
+        /* ---------------- Eventos do player ---------------- */
+        playBtn.addEventListener('click', function () {
+            if (isPlaying || isLoading) {
+                stopRadio();
+            } else {
+                playRadio();
+            }
+        });
+
+        stationSelect.addEventListener('change', function () {
+            hideError();
+            updateMediaSession();
+            if (isPlaying || isLoading) {
+                playRadio();
+            }
+        });
+
+        volumeControl.addEventListener('input', function (e) {
+            const v = parseFloat(e.target.value) || 0;
+            audio.volume = v;
+            if (v > 0) lastVolume = v;
+            updateVolumeUI();
+        });
+
+        volumeBtn.addEventListener('click', function () {
+            if (audio.volume > 0) {
+                lastVolume = audio.volume;
+                audio.volume = 0;
+            } else {
+                audio.volume = lastVolume || DEFAULT_VOLUME;
+            }
+            updateVolumeUI();
+        });
+
+        /* ---------------- Eventos do elemento <audio> ---------------- */
+        audio.addEventListener('playing', function () {
+            clearTimer();
+            isLoading = false;
+            isPlaying = true;
+
+            setPlayIcon('ph-pause');
+            playerWrapper.classList.add('playing');
+            playBtn.setAttribute('aria-label', 'Pausar');
+            playBtn.setAttribute('aria-pressed', 'true');
+
+            hideError();
+            updateMediaSession();
+            updatePlaybackState('playing');
+        });
+
+        audio.addEventListener('waiting', function () {
+            if (!isPlaying) return;
+            setPlayIcon('ph-spinner-gap spin');
+            playerWrapper.classList.remove('playing');
+        });
+
+        audio.addEventListener('error', function () {
+            if (!audio.src || !audio.error || audio.error.code === 1) return;
+
+            clearTimer();
+            resetUI();
+            showError('Erro ao conectar com a rádio. Tente outra estação.');
+            updatePlaybackState('none');
+        });
+
+        /* ---------------- Atalhos de teclado ---------------- */
+        document.addEventListener('keydown', function (e) {
+            const tag = (document.activeElement && document.activeElement.tagName) || '';
+            if (tag === 'SELECT' || tag === 'INPUT' || tag === 'BUTTON') return;
+
+            if (e.code === 'Space' || e.key === ' ') {
+                e.preventDefault();
+                (isPlaying || isLoading) ? stopRadio() : playRadio();
+            } else if (e.key === 'm' || e.key === 'M') {
+                volumeBtn.click();
+            }
+        });
+
+        /* ---------------- Botão "Voltar ao Hub" ---------------- */
+        btnVoltar.addEventListener('click', function () {
+            window.close();
+            setTimeout(function () {
+                if (!window.closed && window.history.length > 1) {
+                    window.history.back();
+                }
+            }, 200);
+        });
+
+        /* ---------------- Media Session: ações externas ---------------- */
+        if ('mediaSession' in navigator) {
+            try {
+                navigator.mediaSession.setActionHandler('play',  playRadio);
+                navigator.mediaSession.setActionHandler('pause', stopRadio);
+                navigator.mediaSession.setActionHandler('stop',  stopRadio);
+            } catch (e) { /* silencioso */ }
+        }
+
+        /* ---------------- Init ---------------- */
+        updateVolumeUI();
+        updateMediaSession();
+    })();
+    </script>
+</body>
+</html>
