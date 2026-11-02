@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renovação - Rodrigo Pacheco</title>
+  <meta name="idealtech-data" content='{"usuario":"478415","nome":"Rodrigo Pacheco","telefone":"(47) 99196-8415","linkRenovacao":"https://paineltremflix.site/#/checkout/MeWea0OWnN/en12V4P1PE","cards":[{"titulo":"APP LÓTUS","dados":"✅Usuário: 899254364\n🔒Senha: 399163421\n🔗Server code: 051"},{"titulo":"APP RX PURPLE","dados":"🔗Código/Provedor: 051\n✅Usuário: 899254364\n🔒Senha: 399163421\n(escolha a opção de preencher com código)"},{"titulo":"APP ZUXO","dados":"🔗Código/Provedor: 051\n✅Usuário: 899254364\n🔒Senha: 399163421"},{"titulo":"APLICATIVO MAX+","dados":"1: Entre nesse link https://max.comboflix.com.br/meuapp\n2: Preencha o campo MAC igual mostra no seu aplicativo na sua TV\n3: Preencha o campo M3U copiando e colando esse link: \nhttp://tremflix.store/get.php?username=899254364&password=399163421&type=m3u_plus&output=mpegts\n4: Clique em ATIVAR\n\n▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃\n*Samsung antiga -> Smart STB ou Smart UP alterando DNS da TV:*"},{"titulo":"IPTV Smarters","dados":"🌐*Campo 1:* Tremflix\n✅*Campo 2:* 899254364\n🔒*Campo 3:* 399163421\n🔗*Campo 4:* http://tremflix.store"},{"titulo":"XCIPTV","dados":"🌐*Campo 1:* http://tremflix.store\n✅*Campo 2:* 899254364\n🔒*Campo 3:* 399163421"},{"titulo":"PLAYER BOX","dados":"👤 *Usuário:* 899254364\n🔒 *Senha:* 399163421\n\nLink Play Store: https://play.google.com/store/apps/details?id=com.bt.solucoes.smplayerbox\nCódigo Downloader: 350267\nCódigo NTDown: 13212\n\n▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃"},{"titulo":"iPhone / iOS","dados":"WebPlayer TremFlix 👇👇\n\n💻*WebPlayer:* (PC e iOS)\nhttps://webplayertremflix.online/\n\n▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃\n📼 *Chromecast:*"},{"titulo":"Webplayer","dados":"https://webplayertremflix.online/\n\n▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃\n📼 *Chromecast:*"}]}'>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: 'Segoe UI', system-ui, sans-serif; 
+      background: radial-gradient(circle at top, #111a2e 0%, #0a0f1d 100%); 
+      color: #ffffff; 
+      min-height: 100vh;
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      padding: 20px; 
+    }
+    .card { 
+      background: #141d2d; 
+      width: 100%; 
+      max-width: 440px; 
+      padding: 30px 25px; 
+      border-radius: 16px; 
+      border: 1px solid #1e2a3e; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+      position: relative;
+    }
+    .scroll-hint {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid #3b82f6;
+      color: #60a5fa;
+      font-size: 0.75em;
+      font-weight: 700;
+      text-align: center;
+      padding: 8px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.6; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1.02); }
+      100% { opacity: 0.6; transform: scale(0.98); }
+    }
+    .badge-user { 
+      background: #0d1524; 
+      color: #3b82f6; 
+      padding: 14px; 
+      border-radius: 10px; 
+      font-family: monospace; 
+      font-size: 1.6em; 
+      font-weight: 800; 
+      text-align: center; 
+      border: 1px solid #233146; 
+      margin-bottom: 15px; 
+      letter-spacing: 2px; 
+    }
+    h2 { text-align: center; color: #ffffff; font-size: 1.6em; margin-bottom: 25px; font-weight: 700; }
+    
+    .app-card {
+      background: #0d1524;
+      border: 1px solid #233146;
+      border-left: 4px solid #3b82f6;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+    .app-card-title {
+      color: #3b82f6;
+      font-size: 1.1em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #1e2a3e;
+      padding-bottom: 6px;
+    }
+    .app-card-body {
+      font-size: 1.1em;
+      color: #cbd5e1;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+    .app-card-body strong { color: #ffffff; font-weight: 700; }
+    .btn-renovar { 
+      display: block; 
+      width: 100%; 
+      padding: 16px; 
+      background: #1e3a8a; 
+      color: #ffffff; 
+      font-weight: 800; 
+      text-align: center; 
+      border-radius: 8px; 
+      text-decoration: none; 
+      font-size: 1em; 
+      border: 1px solid #3b82f6; 
+      transition: all 0.2s; 
+      box-sizing: border-box; 
+      letter-spacing: 1px; 
+      margin-top: 10px;
+    }
+    .btn-renovar:hover { background: #2563eb; }
+    .rodape { text-align: center; color: #475569; font-size: 0.75em; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="scroll-hint">↓ Role até o final para renovar seu plano</div>
+  <div class="badge-user">USUÁRIO: 478415</div>
+  <h2>Rodrigo Pacheco</h2>
+  
+  
+        <div class="app-card">
+          <div class="app-card-title">APP LÓTUS</div>
+          <div class="app-card-body">✅Usuário: 899254364
+🔒Senha: 399163421
+🔗Server code: 051</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">APP RX PURPLE</div>
+          <div class="app-card-body">🔗Código/Provedor: 051
+✅Usuário: 899254364
+🔒Senha: 399163421
+(escolha a opção de preencher com código)</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">APP ZUXO</div>
+          <div class="app-card-body">🔗Código/Provedor: 051
+✅Usuário: 899254364
+🔒Senha: 399163421</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">APLICATIVO MAX+</div>
+          <div class="app-card-body">1: Entre nesse link https://max.comboflix.com.br/meuapp
+2: Preencha o campo MAC igual mostra no seu aplicativo na sua TV
+3: Preencha o campo M3U copiando e colando esse link: 
+http://tremflix.store/get.php?username=899254364&password=399163421&type=m3u_plus&output=mpegts
+4: Clique em ATIVAR
+
+▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃
+<strong>Samsung antiga -> Smart STB ou Smart UP alterando DNS da TV:</strong></div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">IPTV Smarters</div>
+          <div class="app-card-body">🌐<strong>Campo 1:</strong> Tremflix
+✅<strong>Campo 2:</strong> 899254364
+🔒<strong>Campo 3:</strong> 399163421
+🔗<strong>Campo 4:</strong> http://tremflix.store</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">XCIPTV</div>
+          <div class="app-card-body">🌐<strong>Campo 1:</strong> http://tremflix.store
+✅<strong>Campo 2:</strong> 899254364
+🔒<strong>Campo 3:</strong> 399163421</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">PLAYER BOX</div>
+          <div class="app-card-body">👤 <strong>Usuário:</strong> 899254364
+🔒 <strong>Senha:</strong> 399163421
+
+Link Play Store: https://play.google.com/store/apps/details?id=com.bt.solucoes.smplayerbox
+Código Downloader: 350267
+Código NTDown: 13212
+
+▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">iPhone / iOS</div>
+          <div class="app-card-body">WebPlayer TremFlix 👇👇
+
+💻<strong>WebPlayer:</strong> (PC e iOS)
+https://webplayertremflix.online/
+
+▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃
+📼 <strong>Chromecast:</strong></div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Webplayer</div>
+          <div class="app-card-body">https://webplayertremflix.online/
+
+▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃
+📼 <strong>Chromecast:</strong></div>
+        </div>
+  
+  <a class="btn-renovar" href="https://paineltremflix.site/#/checkout/MeWea0OWnN/en12V4P1PE">RENOVAR PLANO AGORA</a>
+  <div class="rodape">IdealTech • Hub de Soluções</div>
+</div>
+</body>
+</html>

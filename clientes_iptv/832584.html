@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renovação - Alexandre Soares</title>
+  <meta name="idealtech-data" content='{"usuario":"832584","nome":"Alexandre Soares","telefone":"(83) 98714-2584","linkRenovacao":"https://paineltremflix.site/#/checkout/OxLAapoLZ7/4vLbAE41gG","cards":[{"titulo":"BLESSED PLAYER","dados":"🔗Provedor: boxs\n✅Usuário: 636018178\n🔒Senha: 625962894"},{"titulo":"LAZER PLAYER","dados":"🔗Provedor: boxs\n✅Usuário: 636018178\n🔒Senha: 625962894\n(cliente precisa clicar em PLAYLIST na tela inicial do app e preencher)"},{"titulo":"FUN PLAY","dados":"🔗Provedor: boxs\n✅Usuário: 636018178\n🔒Senha: 625962894\n(cliente precisa clicar em PLAYLIST na tela inicial do app e preencher)"},{"titulo":"ASSIST+","dados":"🔗Código/Provedor: 051\n✅Usuário: 636018178\n🔒Senha: 625962894"},{"titulo":"PLAYSIM","dados":"🔗Código/Provedor: 051\n✅Usuário: 636018178\n🔒Senha: 625962894"},{"titulo":"IPTV Smarters","dados":"🌐*Campo 1:* Tremflix\n✅*Campo 2:* 636018178\n🔒*Campo 3:* 625962894\n🔗*Campo 4:* http://tremflix.store:80"},{"titulo":"XCIPTV","dados":"🌐*Campo 1:* http://tremflix.store:80\n✅*Campo 2:* 636018178\n🔒*Campo 3:* 625962894"},{"titulo":"Dispositivos Compatíveis","dados":"ROKU | LG WebOS | SAMSUNG TIZEN | iOS | FOXXUM | WHALE TV\nROKU | SAMSUNG | LG | ANDROID"},{"titulo":"Celular Android (APPs)","dados":"8951108 TremFlix 2.0 (downloader)\n7841140 TremFlix 4K (downloader)\n1589556 TremFlix PRO (downloader\n5992086 TremFlix Lite (downloader)\n6390937 Blessed Player (downloader)\n346289 RioBox (downloader) \n\n▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃"},{"titulo":"iPhone / iOS","dados":"Blessed Player | MaxPlayer (ativando no painel)\n\n💻*WebPlayer:* (PC e iOS)\nhttps://webplayertremflix.online/\n\n▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃"},{"titulo":"Webplayer","dados":"https://webplayertremflix.online/\n\n▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃"}]}'>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: 'Segoe UI', system-ui, sans-serif; 
+      background: radial-gradient(circle at top, #111a2e 0%, #0a0f1d 100%); 
+      color: #ffffff; 
+      min-height: 100vh;
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      padding: 20px; 
+    }
+    .card { 
+      background: #141d2d; 
+      width: 100%; 
+      max-width: 440px; 
+      padding: 30px 25px; 
+      border-radius: 16px; 
+      border: 1px solid #1e2a3e; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+      position: relative;
+    }
+    .scroll-hint {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid #3b82f6;
+      color: #60a5fa;
+      font-size: 0.75em;
+      font-weight: 700;
+      text-align: center;
+      padding: 8px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.6; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1.02); }
+      100% { opacity: 0.6; transform: scale(0.98); }
+    }
+    .badge-user { 
+      background: #0d1524; 
+      color: #3b82f6; 
+      padding: 14px; 
+      border-radius: 10px; 
+      font-family: monospace; 
+      font-size: 1.6em; 
+      font-weight: 800; 
+      text-align: center; 
+      border: 1px solid #233146; 
+      margin-bottom: 15px; 
+      letter-spacing: 2px; 
+    }
+    h2 { text-align: center; color: #ffffff; font-size: 1.6em; margin-bottom: 25px; font-weight: 700; }
+    
+    .app-card {
+      background: #0d1524;
+      border: 1px solid #233146;
+      border-left: 4px solid #3b82f6;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+    .app-card-title {
+      color: #3b82f6;
+      font-size: 1.1em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #1e2a3e;
+      padding-bottom: 6px;
+    }
+    .app-card-body {
+      font-size: 1.1em;
+      color: #cbd5e1;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+    .app-card-body strong { color: #ffffff; font-weight: 700; }
+    .btn-renovar { 
+      display: block; 
+      width: 100%; 
+      padding: 16px; 
+      background: #1e3a8a; 
+      color: #ffffff; 
+      font-weight: 800; 
+      text-align: center; 
+      border-radius: 8px; 
+      text-decoration: none; 
+      font-size: 1em; 
+      border: 1px solid #3b82f6; 
+      transition: all 0.2s; 
+      box-sizing: border-box; 
+      letter-spacing: 1px; 
+      margin-top: 10px;
+    }
+    .btn-renovar:hover { background: #2563eb; }
+    .rodape { text-align: center; color: #475569; font-size: 0.75em; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="scroll-hint">↓ Role até o final para renovar seu plano</div>
+  <div class="badge-user">USUÁRIO: 832584</div>
+  <h2>Alexandre Soares</h2>
+  
+  
+        <div class="app-card">
+          <div class="app-card-title">BLESSED PLAYER</div>
+          <div class="app-card-body">🔗Provedor: boxs
+✅Usuário: 636018178
+🔒Senha: 625962894</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">LAZER PLAYER</div>
+          <div class="app-card-body">🔗Provedor: boxs
+✅Usuário: 636018178
+🔒Senha: 625962894
+(cliente precisa clicar em PLAYLIST na tela inicial do app e preencher)</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">FUN PLAY</div>
+          <div class="app-card-body">🔗Provedor: boxs
+✅Usuário: 636018178
+🔒Senha: 625962894
+(cliente precisa clicar em PLAYLIST na tela inicial do app e preencher)</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">ASSIST+</div>
+          <div class="app-card-body">🔗Código/Provedor: 051
+✅Usuário: 636018178
+🔒Senha: 625962894</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">PLAYSIM</div>
+          <div class="app-card-body">🔗Código/Provedor: 051
+✅Usuário: 636018178
+🔒Senha: 625962894</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">IPTV Smarters</div>
+          <div class="app-card-body">🌐<strong>Campo 1:</strong> Tremflix
+✅<strong>Campo 2:</strong> 636018178
+🔒<strong>Campo 3:</strong> 625962894
+🔗<strong>Campo 4:</strong> http://tremflix.store:80</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">XCIPTV</div>
+          <div class="app-card-body">🌐<strong>Campo 1:</strong> http://tremflix.store:80
+✅<strong>Campo 2:</strong> 636018178
+🔒<strong>Campo 3:</strong> 625962894</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Dispositivos Compatíveis</div>
+          <div class="app-card-body">ROKU | LG WebOS | SAMSUNG TIZEN | iOS | FOXXUM | WHALE TV
+ROKU | SAMSUNG | LG | ANDROID</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Celular Android (APPs)</div>
+          <div class="app-card-body">8951108 TremFlix 2.0 (downloader)
+7841140 TremFlix 4K (downloader)
+1589556 TremFlix PRO (downloader
+5992086 TremFlix Lite (downloader)
+6390937 Blessed Player (downloader)
+346289 RioBox (downloader) 
+
+▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">iPhone / iOS</div>
+          <div class="app-card-body">Blessed Player | MaxPlayer (ativando no painel)
+
+💻<strong>WebPlayer:</strong> (PC e iOS)
+https://webplayertremflix.online/
+
+▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Webplayer</div>
+          <div class="app-card-body">https://webplayertremflix.online/
+
+▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃</div>
+        </div>
+  
+  <a class="btn-renovar" href="https://paineltremflix.site/#/checkout/OxLAapoLZ7/4vLbAE41gG">RENOVAR PLANO AGORA</a>
+  <div class="rodape">IdealTech • Hub de Soluções</div>
+</div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
